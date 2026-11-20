@@ -1,0 +1,247 @@
+/* =====================================================
+   estilos.css  -  Hoja de estilos única del sitio
+   Paleta: arena, verde petróleo y terracota
+   Secciones:
+   1. Fuentes y variables (colores de Bootstrap incluidos)
+   2. Base y navegación
+   3. Inicio (hero y foto)
+   4. Perfil profesional
+   5. Experiencia (línea de tiempo)
+   6. Formación
+   7. Proyectos
+   8. Referencias
+   9. Clases que usa JavaScript
+   10. Pie de página y modo oscuro
+   =====================================================*/
+ 
+/* 1. Fuentes y variables ------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap");
+ 
+:root {
+  /* Colores propios */
+  --arena: #f4efe6;
+  --arena-oscura: #e6dccb;
+  --crema: #fffdf9;
+  --tinta: #2a2623;
+  --petroleo: #1f4e52;
+  --petroleo-oscuro: #163a3d;
+  --terracota: #b9663a;
+  --ocre: #c9a25c;
+  --salvia: #6b8262;
+  --radio: 14px;
+  --sombra: 0 1px 2px rgba(42, 38, 35, .06), 0 8px 24px rgba(42, 38, 35, .07);
+ 
+  /* Se reemplazan los colores de Bootstrap por la paleta */
+  --bs-primary: #1f4e52;       --bs-primary-rgb: 31, 78, 82;
+  --bs-info: #b9663a;          --bs-info-rgb: 185, 102, 58;
+  --bs-warning: #c9a25c;       --bs-warning-rgb: 201, 162, 92;
+  --bs-success: #6b8262;       --bs-success-rgb: 107, 130, 98;
+  --bs-danger: #a8483c;        --bs-danger-rgb: 168, 72, 60;
+  --bs-secondary: #8a8279;     --bs-secondary-rgb: 138, 130, 121;
+  --bs-link-color-rgb: 31, 78, 82;
+  --bs-link-hover-color-rgb: 185, 102, 58;
+  --bs-body-font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  --bs-body-color: #2a2623;
+  --bs-body-color-rgb: 42, 38, 35;
+  --bs-body-bg: #f4efe6;
+  --bs-body-bg-rgb: 244, 239, 230;
+}
+ 
+/* Botones de Bootstrap con la paleta */
+.btn-primary {
+  --bs-btn-bg: var(--petroleo); --bs-btn-border-color: var(--petroleo);
+  --bs-btn-hover-bg: var(--petroleo-oscuro); --bs-btn-hover-border-color: var(--petroleo-oscuro);
+  --bs-btn-active-bg: var(--petroleo-oscuro); --bs-btn-active-border-color: var(--petroleo-oscuro);
+  --bs-btn-disabled-bg: var(--petroleo); --bs-btn-disabled-border-color: var(--petroleo);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--petroleo); --bs-btn-border-color: var(--petroleo);
+  --bs-btn-hover-bg: var(--petroleo); --bs-btn-hover-border-color: var(--petroleo);
+  --bs-btn-active-bg: var(--petroleo); --bs-btn-active-border-color: var(--petroleo);
+}
+.btn-warning {
+  --bs-btn-bg: var(--ocre); --bs-btn-border-color: var(--ocre); --bs-btn-color: #2a2623;
+  --bs-btn-hover-bg: #b88f48; --bs-btn-hover-border-color: #b88f48; --bs-btn-hover-color: #2a2623;
+}
+.btn-success {
+  --bs-btn-bg: var(--salvia); --bs-btn-border-color: var(--salvia);
+  --bs-btn-hover-bg: #5a6f52; --bs-btn-hover-border-color: #5a6f52;
+}
+.btn-danger {
+  --bs-btn-bg: #a8483c; --bs-btn-border-color: #a8483c;
+  --bs-btn-hover-bg: #8f3b31; --bs-btn-hover-border-color: #8f3b31;
+}
+.btn-outline-danger { --bs-btn-color: #a8483c; --bs-btn-border-color: #a8483c; --bs-btn-hover-bg: #a8483c; --bs-btn-hover-border-color: #a8483c; }
+.text-primary { color: var(--petroleo) !important; }
+.form-control:focus, .form-select:focus {
+  border-color: var(--petroleo);
+  box-shadow: 0 0 0 .2rem rgba(31, 78, 82, .18);
+}
+ 
+/* 2. Base y navegación -------------------------------- */
+body {
+  background: var(--arena);
+  color: var(--tinta);
+  transition: background .3s, color .3s;
+}
+h1, h2, h3, h4, .navbar-brand {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  letter-spacing: -.01em;
+}
+ 
+.navbar {
+  background: var(--petroleo-oscuro);
+  border-bottom: 3px solid var(--terracota);
+}
+.navbar-brand { font-weight: 700; color: var(--arena) !important; }
+.navbar .nav-link { color: #cfd9d6; border-radius: 8px; padding: .45rem .8rem; font-weight: 500; font-size: .95rem; }
+.navbar .nav-link:hover { color: #fff; background: rgba(255, 255, 255, .08); }
+.navbar .nav-link.active { color: var(--petroleo-oscuro); background: var(--arena); }
+ 
+.titulo-seccion {
+  font-weight: 700;
+  position: relative;
+  padding-bottom: .7rem;
+  margin-bottom: 1.6rem;
+}
+.titulo-seccion::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 56px; height: 3px; border-radius: 3px;
+  background: var(--terracota);
+}
+ 
+.tarjeta {
+  background: var(--crema);
+  border: 1px solid var(--arena-oscura);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  transition: transform .25s, box-shadow .25s;
+}
+.tarjeta:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(42, 38, 35, .08), 0 16px 32px rgba(42, 38, 35, .12); }
+ 
+.table { --bs-table-bg: transparent; --bs-table-striped-bg: rgba(201, 162, 92, .12); }
+.table-dark { --bs-table-bg: var(--petroleo-oscuro); --bs-table-border-color: var(--petroleo-oscuro); }
+.list-group-item { background: transparent; }
+ 
+/* 3. Inicio (hero y foto) ----------------------------- */
+.hero {
+  background: linear-gradient(135deg, #1f4e52, #2f6a6e);
+  color: var(--arena);
+  border-radius: 22px;
+  padding: 2.8rem 1.6rem;
+  box-shadow: 0 20px 40px rgba(22, 58, 61, .25);
+  transition: background .4s;
+}
+.hero h1 { font-weight: 700; }
+.foto-perfil {
+  width: 220px; height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--arena);
+  box-shadow: 0 0 0 3px var(--terracota), 0 14px 30px rgba(0, 0, 0, .3);
+  cursor: pointer;
+  transition: transform .3s;
+}
+.foto-perfil:hover { transform: scale(1.04); }
+.lista-contacto li { transition: background .2s; }
+ 
+/* 4. Perfil profesional ------------------------------- */
+.panel-lateral {
+  background: var(--petroleo-oscuro);
+  color: #dbe5e2;
+  border-radius: var(--radio);
+  border-top: 4px solid var(--terracota);
+}
+.cita-perfil {
+  border-left: 4px solid var(--terracota);
+  padding-left: 1rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.15em;
+}
+.progress { height: 10px; border-radius: 10px; background: var(--arena-oscura); }
+.progress-bar { transition: width 1.2s ease; }
+#texto-perfil { transition: font-size .2s; }
+ 
+/* 5. Experiencia (línea de tiempo) -------------------- */
+.linea-tiempo { position: relative; padding-left: 2rem; border-left: 2px solid var(--arena-oscura); }
+.linea-tiempo .hito { position: relative; margin-bottom: 1.6rem; }
+.linea-tiempo .hito::before {
+  content: "";
+  position: absolute; left: -2.62rem; top: .3rem;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--arena); border: 4px solid var(--terracota);
+}
+ 
+/* 6. Formación ---------------------------------------- */
+.insignia-tipo { font-size: .72rem; letter-spacing: .6px; text-transform: uppercase; }
+.curso-card { border-top: 4px solid var(--terracota); }
+.accordion {
+  --bs-accordion-bg: var(--crema);
+  --bs-accordion-border-color: var(--arena-oscura);
+  --bs-accordion-active-bg: #efe7d8;
+  --bs-accordion-active-color: var(--petroleo-oscuro);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 .2rem rgba(31, 78, 82, .18);
+}
+.list-group-item.active { background: var(--petroleo); border-color: var(--petroleo); }
+ 
+/* 7. Proyectos ---------------------------------------- */
+.proyecto-img { height: 180px; object-fit: cover; border-radius: var(--radio) var(--radio) 0 0; }
+.proyecto-card { position: relative; overflow: hidden; }
+.btn-quitar {
+  position: absolute; top: 10px; right: 10px;
+  z-index: 2; border-radius: 50%; width: 34px; height: 34px; padding: 0;
+}
+ 
+/* 8. Referencias -------------------------------------- */
+.referencia { border-left: 5px solid var(--terracota); }
+.referencia blockquote { font-family: "Fraunces", Georgia, serif; font-size: 1.05rem; }
+.avatar-ref {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--petroleo); color: var(--arena);
+  font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 1.2rem; flex-shrink: 0;
+}
+ 
+/* 9. Clases que usa JavaScript ------------------------ */
+.resaltado { outline: 4px solid var(--ocre); outline-offset: 4px; }
+.oculto { display: none !important; }
+.fila-activa { background: rgba(201, 162, 92, .22) !important; }
+.nuevo { animation: aparecer .6s ease; }
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+#btn-subir {
+  position: fixed; right: 20px; bottom: 20px;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: none; z-index: 1030;
+}
+#btn-subir.visible { display: block; }
+ 
+/* 10. Pie de página y modo oscuro --------------------- */
+footer { background: var(--petroleo-oscuro); color: #cfd9d6; border-top: 3px solid var(--terracota); }
+ 
+[data-bs-theme="dark"] {
+  --bs-body-bg: #1a1816;
+  --bs-body-color: #ece6da;
+  --bs-body-color-rgb: 236, 230, 218;
+  --bs-primary-rgb: 117, 175, 178;
+  --bs-link-color-rgb: 201, 162, 92;
+}
+[data-bs-theme="dark"] body { background: #1a1816; color: #ece6da; }
+[data-bs-theme="dark"] .tarjeta { background: #24211e; border-color: #38332e; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); }
+[data-bs-theme="dark"] .navbar .nav-link.active { background: var(--ocre); color: #1a1816; }
+[data-bs-theme="dark"] .linea-tiempo { border-left-color: #38332e; }
+[data-bs-theme="dark"] .linea-tiempo .hito::before { background: #1a1816; }
+[data-bs-theme="dark"] .fila-activa { background: rgba(201, 162, 92, .2) !important; }
+[data-bs-theme="dark"] .text-primary { color: var(--ocre) !important; }
+[data-bs-theme="dark"] .progress { background: #38332e; }
+[data-bs-theme="dark"] .accordion { --bs-accordion-bg: #24211e; --bs-accordion-border-color: #38332e; --bs-accordion-active-bg: #2e2a26; --bs-accordion-active-color: var(--ocre); --bs-accordion-color: #ece6da; --bs-accordion-btn-color: #ece6da; }
+[data-bs-theme="dark"] .btn-outline-primary { --bs-btn-color: var(--ocre); --bs-btn-border-color: var(--ocre); --bs-btn-hover-bg: var(--ocre); --bs-btn-hover-color: #1a1816; }
+[data-bs-theme="dark"] .btn-primary { --bs-btn-bg: var(--terracota); --bs-btn-border-color: var(--terracota); --bs-btn-hover-bg: #a05730; --bs-btn-hover-border-color: #a05730; }
+ 
+@media (max-width: 576px) {
+  .foto-perfil { width: 170px; height: 170px; }
+}
+ 
